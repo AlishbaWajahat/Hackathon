@@ -1,101 +1,85 @@
+
+import Card1 from "@/components/Card1";
+import Card2 from "@/components/Card2";
+import Card3 from "@/components/Card3";
+
+import Header from "@/components/Header";
+import { Fullscreen } from "lucide-react";
 import Image from "next/image";
+
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <>
+      {/* hero section */}
+      <div className="bg-[#FBEBB5] max-w-[1800px] "><Header/></div>
+      <div className="lg:h-[800px] md:h-[600px] h-auto bg-[#FBEBB5] max-w-[1800px] flex justify-center items-center font-poppin lg:gap-12 gap-8 md:flex-row flex-col-reverse pt-8 pb-8 md:pt-0 md:pb-0 md:px-10">
+        <div className=" md:w-[440px] w-auto h-auto text-center md:text-start">
+          <h1 className="font-medium md:text-[30px] text-[44px] lg:text-[64px]">Rocket single seater</h1>
+          <p className="text-2xl underline underline-offset-[16px] font-medium mt-6">Shop now</p>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        <div >
+          <Image src={"/hero seat.png"} alt="seat" width={650} height={650} />
+        </div>
+      </div>
+
+      {/* 1st section */}
+      <div className="max-w-[1800px] h-auto py-4 px-8 flex gap-4   items-center justify-around font-poppin">
+        <Card1 ImageUrl="/pic1(Home).png" width={450} height={450} />
+        <Card1 ImageUrl="/pic2(Home).png" width={450} height={450} />
+      </div>
+
+      {/* 2nd section */}
+
+      <div className="font-poppin flex flex-col items-center py-10 md:mt-14 mt-8 max-w-[1800px]">
+        <h1 className="text-4xl font-medium text-center">Top Picks For You</h1>
+        <p className="text-base text-[#9F9F9F] mt-4 mx-12 text-center">Find a bright ideal to suit your taste with our great selection of suspension, floor and table lights.</p>
+        <div className="flex gap-6 justify-center w-full flex-wrap md:flex-nowrap py-6  mt-8 md:mt-14">
+          <Card2 ImageUrl="/pic1(2nd sec).png" text="Trenton modular sofa_3" />
+          <Card2 ImageUrl="/pic2 (2nd sec).png" text="Granite dining table with dining chair" />
+          <Card2 ImageUrl="/pic3(2nd sec) (2).png" text="Outdoor bar table and stool" />
+          <Card2 ImageUrl="/pic4(2nd sec).png" text="plain console with teak mirror" />
+        </div>
+        <p className="text-[20px] underline underline-offset-[16px] font-medium mt-6 md:mt-8">View More</p>
+      </div>
+
+
+      {/* 3rd section */}
+      <div className="max-w-[1800px] bg-[#FBEBB5]  flex font-poppin items-center md:gap-20 lg:gap-28 gap-16 sm:pt-12 pt-8 justify-center md:flex-row flex-col-reverse">
+        <div className=""><Image src={"/section3.png"} alt="section3" width={700} height={700} /></div>
+        <div className="flex items-center flex-col">
+          <p className="text-2xl font-medium text-center">New Arrivals</p>
+          <p className="sm:text-5xl text-4xl font-bold mt-3 text-center ">Asgaard sofa</p>
+          <div className="w-[200px] h[40px] py-2 px-4 border-2 border-black flex justify-center mt-8"> Order Now</div>
+        </div>
+      </div>
+
+      {/* 4th section */}
+      <div className="font-poppin flex flex-col items-center py-14 max-w-[1800px]">
+        <h1 className="text-4xl font-medium text-center">Our Blogs</h1>
+        <p className="text-base text-[#9F9F9F] mt-4 mx-12 text-center">Find a bright ideal to suit your taste with our great selection of suspension, floor and table lights.</p>
+        <div className="flex gap-6 justify-center w-full flex-wrap md:flex-nowrap pb-6 px-4 lg-px-0  mt-8 md:mt-14  items-center">
+          <Card3 ImageUrl="/pic1 (4th sec).png" />
+          <Card3 ImageUrl="/pic2 (4th sec).png"  />
+          <Card3 ImageUrl="/pic3 (4th sec).png" />
+          
+        </div>
+        <p className="text-[20px] underline underline-offset-[16px] font-medium mt-6 md:mt-10">View All Posts</p>
+      </div>
+
+      {/* 5th section */}
+      <div className="font-poppin max-w-[1800px] sm:h-[300px] h-[200px] md:h-[450px] lg:mb-20 flex justify-center items-center relative">
+        <Image src={"/section5.png"} alt="image" fill/>
+
+        <div className=" flex flex-col z-10">
+          <h1 className="md:text-6xl sm:text-4xl text-3xl font-bold text-center">Our Instagram</h1>
+          <p className="text-base text-center mt-4">Follow our store on Instagram</p>
+          <p className="text-base text-center mt-6">Follow Us</p>
+        </div>
+      </div>
+
+
+    </>
+
   );
 }
