@@ -74,7 +74,7 @@ export default function Home() {
         <div className=" flex flex-col z-10">
           <h1 className="md:text-6xl sm:text-4xl text-3xl font-bold text-center">Our Instagram</h1>
           <p className="text-base text-center mt-4">Follow our store on Instagram</p>
-          <p className="text-base text-center mt-6">Follow us</p>
+          <p className="text-base text-center mt-6">Follow me</p>
         </div>
       </div>
 
