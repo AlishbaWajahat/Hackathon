@@ -17,20 +17,20 @@ const page = () => {
     <Hero text='Contact'/>
     {/* 1st section */}
 
-    <div className='flex flex-col items-center max-w-[1800px]  font-poppin pt-24 '>
-        <div>
-            <h1 className='text-center text-4xl font-semibold'>Get In Touch With Us</h1>
-            <p className='text-center text-base text-[#9F9F9F] mt-6'>For More Information About Our Product & Services. Please Feel Free To Drop Us</p>
-            <p className='text-center text-base text-[#9F9F9F] '>An Email. Our Staff Always Be There To Help You Out. Do Not Hesitate!</p>
+    <div className='flex flex-col items-center max-w-[1800px]  font-poppin sm:pt-24 pt-16 '>
+        <div className=' mx-10'> 
+            <h1 className='text-center sm:text-4xl text-2xl font-semibold'>Get In Touch With Us</h1>
+            <p className='text-center sm:text-base text-sm text-[#9F9F9F] mt-6'>For More Information About Our Product & Services. Please Feel Free To Drop Us</p>
+            <p className='text-center sm:text-base text-sm text-[#9F9F9F] '>An Email. Our Staff Always Be There To Help You Out. Do Not Hesitate!</p>
         </div>
 
-        <div className=' flex w-full lg:justify-around flex-wrap lg:flex-nowrap'>
-            <div className='py-16 pr-6 pl-24 flex flex-col gap-16 mt-16'>
+        <div className=' flex w-full xl:gap-32 lg:gap-12 flex-wrap lg:flex-nowrap justify-center '>
+            <div className='lg:py-16 lg:pr-6 sm:pl-24 pl-14 p-8  flex lg:flex-col flex-row flex-wrap lg:gap-16 gap-6 mt-16'>
                 <ContactCard iconNode={<FaLocationDot />} heading='Address' text1='236 5th SE Avenue, New'text2='York NY10000, United States'/>
                 <ContactCard iconNode={<FaPhone />} heading='Phone' text1='Mobile: +(84) 546-6789' text2='Hotline: +(84) 456-6789'/>
-                <ContactCard iconNode={<FaClock />} heading='Address' text1='Monday-Friday: 9:00 - 22:00' text2='Saturday-Sunday: 9:00 - 21:00'/>
+                <ContactCard iconNode={<FaClock />} heading='Working Time' text1='Monday-Friday: 9:00 - 22:00' text2='Saturday-Sunday: 9:00 - 21:00'/>
             </div>
-            <div className='pt-32 pr-6 pl-16 pb-16 '>
+            <div className='lg:pt-32 lg:pr-6 lg:pl-16 lg:pb-16 p-8  '>
                 <div className=' flex flex-col gap-8'>
                 <ContactCard2 text1='Your name' text2='Abc'/>
                 <ContactCard2 text1='Email address' text2='Abc@def.com'/>
