@@ -17,7 +17,7 @@ const page = () => {
     <Hero text='Contact'/>
     {/* 1st section */}
 
-    <div className='flex flex-col items-center max-w-[1800px]  font-poppin sm:pt-24 pt-16 '>
+    <div className='flex flex-col items-center max-w-[2000px]  font-poppin sm:pt-24 pt-16 '>
         <div className=' mx-10'> 
             <h1 className='text-center sm:text-4xl text-2xl font-semibold'>Get In Touch With Us</h1>
             <p className='text-center sm:text-base text-sm text-[#9F9F9F] mt-6'>For More Information About Our Product & Services. Please Feel Free To Drop Us</p>

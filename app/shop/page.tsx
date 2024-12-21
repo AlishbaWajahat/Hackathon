@@ -6,6 +6,90 @@ import { HiViewGrid } from "react-icons/hi";
 import { BsViewList } from "react-icons/bs";
 import Card2 from "@/components/Card2";
 import PreFooter from '@/components/PreFooter';
+import Link from 'next/link';
+
+let products=[{
+    id:1,
+    title:"Trenton modular sofa_3",
+    ImageUrl:"/pic1(2nd sec).png",
+    description:"Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound"
+},
+{
+    id:2,
+    title:"Granite dining table with dining chair",
+    ImageUrl:"/pic2 (2nd sec).png",
+    description:"Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound"
+},{
+    id:3,
+    title:"Outdoor bar table and stool",
+    ImageUrl:"/pic3(2nd sec) (2).png",
+    description:"Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound"
+},{
+    id:4,
+    title:"Plain console with teak mirror",
+    ImageUrl:"/pic4(2nd sec).png",
+    description:"Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound"
+},{
+    id:5,
+    title:"Grain coffee table",
+    ImageUrl:"/shop5.png",
+    description:"Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound"
+},{
+    id:6,
+    title:"Kent coffee table",
+    ImageUrl:"/shop6.png",
+    description:"Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound"
+},{
+    id:7,
+    title:"Round coffee table_color 2",
+    ImageUrl:"/shop7.png",
+    description:"Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound"
+},{
+    id:8,
+    title:"Round coffee table_color 2",
+    ImageUrl:"/shop8.png",
+    description:"Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound"
+},{
+    id:9,
+    title:"Plain console_",
+    ImageUrl:"/shop9.png",
+    description:"Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound"
+},{
+    id:10,
+    title:"Reclaimed teak Sideboard",
+    ImageUrl:"/shop10.png",
+    description:"Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound"
+},{
+    id:11,
+    title:"SJP_0825 ",
+    ImageUrl:"/shop11.png",
+    description:"Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound"
+},{
+    id:12,
+    title:"Bella chair and table",
+    ImageUrl:"/shop12.png",
+    description:"Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound"
+},{
+    id:13,
+    title:"Granite square side table",
+    ImageUrl:"/pic1(Home).png",
+    description:"Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound"
+},{
+    id:14,
+    title:"Asgaard sofa",
+    ImageUrl:"/section3.png",
+    description:"Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound"
+},{
+    id:15,
+    title:"Maya sofa three seater",
+    ImageUrl:"/shop15.png",
+    description:"Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound"
+},{
+    id:16,
+    title:"Outdoor sofa set",
+    ImageUrl:"/shop16.png",
+    description:"Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound"
+},]
 
 function page() {
     return (
@@ -14,7 +98,7 @@ function page() {
             <Hero text='Shop' />
 
             {/* 1 sec */}
-            <div className='max-w-[1800px] h-[100px] bg-[#FAF4F4] mt-8 font-poppin flex items-center lg:text-xl text-base'>
+            <div className='max-w-[2000px] h-[100px] bg-[#FAF4F4] mt-8 font-poppin flex items-center lg:text-xl text-base'>
                 <div className='h-[55px]  w-full sm:justify-around justify-center flex sm:px-4 sm:gap-6'>
                     <div className='flex gap-6 items-center sm:px-0 px-2'>
                         <div className='flex gap-2 items-center'>
@@ -43,24 +127,13 @@ function page() {
             </div>
 
             {/* 2nd sec */}
-            <div className='flex max-w-[1800px] items-center justify-center flex-col pt-12 md:pt-16  font-poppin'>
+            <div className='flex max-w-[2000px] items-center justify-center flex-col pt-12 md:pt-16  font-poppin'>
                 <div className='flex gap-8 flex-wrap w-[90%] justify-center'>
-                <Card2 ImageUrl="/pic1(2nd sec).png" text="Trenton modular sofa_3" />
-                <Card2 ImageUrl="/pic2 (2nd sec).png" text="Granite dining table with dining chair" />
-                <Card2 ImageUrl="/pic3(2nd sec) (2).png" text="Outdoor bar table and stool" />
-                <Card2 ImageUrl="/pic4(2nd sec).png" text="plain console with teak mirror" />
-                <Card2 ImageUrl="/shop5.png" text="Trenton modular sofa_3" />
-                <Card2 ImageUrl="/shop6.png" text="Granite dining table with dining chair" />
-                <Card2 ImageUrl="/shop7.png" text="Outdoor bar table and stool" />
-                <Card2 ImageUrl="/shop8.png" text="plain console with teak mirror" />
-                <Card2 ImageUrl="/shop9.png" text="Trenton modular sofa_3" />
-                <Card2 ImageUrl="/shop10.png" text="Granite dining table with dining chair" />
-                <Card2 ImageUrl="/shop11.png" text="Outdoor bar table and stool" />
-                <Card2 ImageUrl="/shop12.png" text="plain console with teak mirror" />
-                <Card2 ImageUrl="/pic1(Home).png" text="Trenton modular sofa_3" />
-                <Card2 ImageUrl="/section3.png" text="Granite dining table with dining chair" />
-                <Card2 ImageUrl="/shop15.png" text="Outdoor bar table and stool" />
-                <Card2 ImageUrl="/shop16.png" text="plain console with teak mirror" />
+                    {products.map((product)=>{
+                        return(<Card2 key={product.id} ImageUrl={product.ImageUrl} text={product.title} id={product.id}/>)
+
+                    })}
+
                 </div>
                 <div className=' h-[60px] flex sm:gap-8 gap-4  text-xl sm:mb-16 mb-12 sm:mt-24 mt-12'>
                     <div className='p-4 sm:p-6 flex justify-center items-center lg:hover:bg-[#FBEBB5] bg-[#FBEBB5]'>1</div>

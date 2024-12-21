@@ -4,6 +4,7 @@ import { RiSearchLine } from "react-icons/ri";
 import { IoHeartOutline } from "react-icons/io5";
 import { IoCartOutline } from "react-icons/io5";
 import { GiHamburgerMenu } from "react-icons/gi";
+import Link from 'next/link';
 import {
     Sheet,
     SheetContent,
@@ -13,9 +14,9 @@ import {
 function Header() {
     return (
         <>
-            <div className='max-w-[1800px] h-[90px] font-poppin flex items-center justify-end'>
-                <div className='flex sm:gap-32 gap-24 lg:mr-24 md:mr-16 mr-8'>
-                    <div className='lg:w-[430px] sm:w-[300px] sm:block hidden h-6 font-medium text-base'>
+            <div className='max-w-[2000px] h-[90px] font-poppin flex items-center justify-end'>
+                <div className='flex sm:gap-32 gap-24 xl::gap-[200px] lg:mr-24 md:mr-16 mr-8'>
+                    <div className='lg:w-[430px] xl:w-[500px] sm:w-[300px] sm:block hidden h-6 font-medium text-base xl:text-xl '>
                         <ul className='flex justify-between'>
                             <li><a href="/">Home</a></li>
                             <li><a href="/shop">Shop</a></li>
@@ -23,8 +24,8 @@ function Header() {
                             <li><a href="/contact">Contact</a></li>
                         </ul>
                     </div>
-                    <div className='lg:w-[247px] w-[150px] h-7 flex justify-between text-lg'>
-                        <BsPersonExclamation />
+                    <div className='lg:w-[247px] w-[150px] h-7 flex justify-between text-xl'>
+                        <Link href={"/profile"}><BsPersonExclamation /></Link>
                         <RiSearchLine />
                         <IoHeartOutline />
                         <IoCartOutline />
