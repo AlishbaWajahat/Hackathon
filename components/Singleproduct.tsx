@@ -41,7 +41,7 @@ export default function Singleproduct(props: Propstype) {
     return (
         <>
             {/* 1st section */}
-            <div className='max-w-[2000px] h-[100px] text-base font-poppin flex gap-4 items-center sm:pl-24 pl-8 mt-2'>
+            <div className='max-w-[2000px] h-[100px] sm:text-base text-[10px] font-poppin flex gap-4 items-center sm:pl-24 pl-8 mt-2'>
                 <div className='flex gap-4 items-center'>
                     <p className='text-[#9F9F9F]'>Home</p>
                     <FaGreaterThan />
