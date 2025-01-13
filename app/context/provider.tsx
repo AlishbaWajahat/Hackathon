@@ -4,28 +4,56 @@ import { CartContext } from "./context"
 import { product } from "@/types/types"
 
 function CartProvider({ children }: { children: React.ReactNode }) {
-    const [cart, setCart] = useState<product[]>(() => {
-        // Retrieve cart from localStorage
-        const savedCart = localStorage.getItem('cart');
-        return savedCart ? JSON.parse(savedCart) : [];
-    });
+    // const [cart, setCart] = useState<product[]>(() => {
+    //     // Retrieve cart from localStorage
+    //     const savedCart = localStorage.getItem('cart');
+    //     return savedCart ? JSON.parse(savedCart) : [];
+    // });
 
     // Save cart to localStorage whenever it changes
-    useEffect(() => {
+    // useEffect(() => {
 
-        localStorage.setItem('cart', JSON.stringify(cart));
-        console.log("items added into local")
-    }, [cart]);
+    //     localStorage.setItem('cart', JSON.stringify(cart));
+    //     console.log("items added into local")
+    // }, [cart]);
 
     // create a total state
 
-    const [total, settotal] = useState<number>(() => {
-        const savedTotal = localStorage.getItem("total");
-        return savedTotal ? JSON.parse(savedTotal) : 0
-    })
+    // const [total, settotal] = useState<number>(() => {
+    //     const savedTotal = localStorage.getItem("total");
+    //     return savedTotal ? JSON.parse(savedTotal) : 0
+    // })
+    // useEffect(() => {
+    //     localStorage.setItem("total", JSON.stringify(total))
+    // }, [total])
+    const [cart, setCart] = useState<product[]>([]);
+    const [total, setTotal] = useState<number>(0);
+  
+    // Retrieve cart and total from localStorage on the client side
     useEffect(() => {
-        localStorage.setItem("total", JSON.stringify(total))
-    }, [total])
+      if (typeof window !== "undefined") {
+        const savedCart = localStorage.getItem("cart");
+        const savedTotal = localStorage.getItem("total");
+  
+        if (savedCart) setCart(JSON.parse(savedCart));
+        if (savedTotal) setTotal(JSON.parse(savedTotal));
+      }
+    }, []);
+  
+    // Save cart to localStorage whenever it changes
+    useEffect(() => {
+      if (typeof window !== "undefined") {
+        localStorage.setItem("cart", JSON.stringify(cart));
+      }
+    }, [cart]);
+  
+    // Save total to localStorage whenever it changes
+    useEffect(() => {
+      if (typeof window !== "undefined") {
+        localStorage.setItem("total", JSON.stringify(total));
+      }
+    }, [total]);
+  
 
 
 
@@ -37,7 +65,7 @@ function CartProvider({ children }: { children: React.ReactNode }) {
 
         ))
         setCart(updatedCard)
-        settotal(updatedCard.reduce((prev, current) => prev + current.Tcost, 0))
+        setTotal(updatedCard.reduce((prev, current) => prev + current.Tcost, 0))
 
     }
     function decrease(products: product) {
@@ -51,7 +79,7 @@ function CartProvider({ children }: { children: React.ReactNode }) {
 
             ))
             setCart(updatedcart)
-            settotal(updatedcart.reduce((prev, current) => prev + current.Tcost, 0))
+            setTotal(updatedcart.reduce((prev, current) => prev + current.Tcost, 0))
         }
 
     }
@@ -65,13 +93,13 @@ function CartProvider({ children }: { children: React.ReactNode }) {
 
             ))
             setCart(updatedCart)
-            settotal(updatedCart.reduce((prev, current) => prev + current.Tcost, 0))
+            setTotal(updatedCart.reduce((prev, current) => prev + current.Tcost, 0))
             alert("quantity added")
 
         } else {
             let array=([...cart, { ...products, quantity: 1, Tcost: products.cost }])
             setCart(array)
-            settotal(array.reduce((prev, current) => prev + current.Tcost, 0))
+            setTotal(array.reduce((prev, current) => prev + current.Tcost, 0))
             alert("product added")
         }
     }
@@ -80,7 +108,7 @@ function CartProvider({ children }: { children: React.ReactNode }) {
     function del(product: product) {
             let update=(cart.filter((e) => e.id !== product.id))
             setCart(update)
-            settotal(update.reduce((prev, current) => prev + current.Tcost, 0))
+            setTotal(update.reduce((prev, current) => prev + current.Tcost, 0))
         
     }
     
