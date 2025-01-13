@@ -4,28 +4,7 @@ import { CartContext } from "./context"
 import { product } from "@/types/types"
 
 function CartProvider({ children }: { children: React.ReactNode }) {
-    // const [cart, setCart] = useState<product[]>(() => {
-    //     // Retrieve cart from localStorage
-    //     const savedCart = localStorage.getItem('cart');
-    //     return savedCart ? JSON.parse(savedCart) : [];
-    // });
 
-    // Save cart to localStorage whenever it changes
-    // useEffect(() => {
-
-    //     localStorage.setItem('cart', JSON.stringify(cart));
-    //     console.log("items added into local")
-    // }, [cart]);
-
-    // create a total state
-
-    // const [total, settotal] = useState<number>(() => {
-    //     const savedTotal = localStorage.getItem("total");
-    //     return savedTotal ? JSON.parse(savedTotal) : 0
-    // })
-    // useEffect(() => {
-    //     localStorage.setItem("total", JSON.stringify(total))
-    // }, [total])
     const [cart, setCart] = useState<product[]>([]);
     const [total, setTotal] = useState<number>(0);
   
