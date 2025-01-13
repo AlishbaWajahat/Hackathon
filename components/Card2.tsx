@@ -12,7 +12,7 @@ type Propstype={
     text:string,
     id:number,
     Cost:number,
-    Product?:{id:number,title:string,imageUrl:string,description:string,cost:number}
+    Product?:{id:number,title:string,imageUrl:string,description?:string,cost:number}
     
 }
 

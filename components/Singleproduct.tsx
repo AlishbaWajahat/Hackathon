@@ -166,7 +166,7 @@ export default function Singleproduct(props: Propstype) {
                 <div className="flex gap-6 justify-center w-full flex-wrap  py-6  mt-8 md:mt-14">
                     {data.map((pro) => {
                         return (
-                            <Card2 id={pro.id} imageUrl={pro.imageUrl} text={pro.title} Cost={props.Cost} />
+                            <Card2 id={pro.id} imageUrl={pro.imageUrl} text={pro.title} Cost={props.Cost} Product={pro} />
                         )
                     })}
 
