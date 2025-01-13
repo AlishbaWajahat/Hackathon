@@ -34,7 +34,7 @@ function Card2(props:Propstype){
  
         </Link>
         <div>
-        <BsCart2 className='text-2xl absolute right-12'onClick={()=>obj.add(props.Product)} />
+        <BsCart2 className='text-2xl absolute right-12 cursor-pointer'onClick={()=>obj.add(props.Product)} />
         </div>
         
     </div>
