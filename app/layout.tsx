@@ -46,8 +46,10 @@ export default function RootLayout({
       <body
         className={(inter.variable,poppin.variable)}
       >
-  
-        {children}
+      <CartProvider>
+      {children}
+      </CartProvider>
+        
         
         <Footer/>
       </body>

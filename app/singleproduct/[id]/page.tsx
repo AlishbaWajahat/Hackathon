@@ -1,4 +1,4 @@
-import CartProvider from '@/app/context/provider';
+
 import Header from '@/components/Header';
 import Singleproduct from '@/components/Singleproduct'
 import { product } from '@/types/types';
@@ -24,7 +24,6 @@ export default async function Page({ params }: { params: { id: string } }) {
     return (
         <>
             <Header />
-            <CartProvider>
             <Singleproduct
                 ImageUrl={selectedProduct.imageUrl}
                 title={selectedProduct.title}
@@ -32,7 +31,6 @@ export default async function Page({ params }: { params: { id: string } }) {
                 Cost={selectedProduct.cost}
                 pro={selectedProduct}
             />
-            </CartProvider>
         </>
     );
 }
