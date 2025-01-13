@@ -12,11 +12,11 @@ import { product } from '@/types/types';
 
 
 
-// const API_URL =
-//   process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000/api/book";
+const API_URL =
+  process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000/api/book";
 async function page() {
-    // const fetching=await fetch(API_URL)
-    // const data=await fetching.json()
+    const fetching=await fetch(API_URL)
+    const data=await fetching.json()
 
     return (
         <>
@@ -54,7 +54,7 @@ async function page() {
             </div>
 
             {/* 2nd sec */}
-            {/* <div className='flex max-w-[3000px] items-center justify-center flex-col pt-12 md:pt-16  font-poppin'>
+            <div className='flex max-w-[3000px] items-center justify-center flex-col pt-12 md:pt-16  font-poppin'>
                 <div className='flex gap-8 flex-wrap w-[90%] justify-center'>
                     {data.map((product:product) => {
                         return (<Card2 key={product.id} imageUrl={product.imageUrl} text={product.title} id={product.id} Product={product} Cost={product.cost}/>)
@@ -68,7 +68,7 @@ async function page() {
                     <div className='p-4 sm:p-6 font-light flex justify-center items-center lg:hover:bg-[#FBEBB5] bg-[#FFF9E5]'>Next</div>
                 </div>
 
-            </div> */}
+            </div>
 
 
             {/* 3rd section */}
