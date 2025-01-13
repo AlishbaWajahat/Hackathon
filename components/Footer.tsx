@@ -3,7 +3,7 @@ import React from 'react'
 function Footer() {
     return (
         <>
-        <div className='max-w-[2000px] auto font-poppin md:pt-12 pt-8'> 
+        <div className='max-w-[3000px] auto font-poppin md:pt-12 pt-8'> 
             <div className='mx-12 mt-12 mb-6 md:pr-12'>
             <div className='flex md:justify-between md:flex-row flex-col gap-4'>
             <div className=' text-base text-[#9F9F9F] h-24 md:self-center'>

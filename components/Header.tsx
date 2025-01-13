@@ -14,7 +14,7 @@ import {
 function Header() {
     return (
         <>
-            <div className='max-w-[2000px] h-[90px] font-poppin flex items-center justify-end'>
+            <div className='max-w-[3000px] h-[90px] font-poppin flex items-center justify-end'>
                 <div className='flex sm:gap-32 gap-24 xl::gap-[200px] lg:mr-24 md:mr-16 mr-8'>
                     <div className='lg:w-[430px] xl:w-[500px] sm:w-[300px] sm:block hidden h-6 font-medium text-base xl:text-xl '>
                         <ul className='flex justify-between'>
@@ -28,7 +28,7 @@ function Header() {
                         <Link href={"/profile"}><BsPersonExclamation /></Link>
                         <RiSearchLine />
                         <IoHeartOutline />
-                        <IoCartOutline />
+                        <Link href={"/cart"}><IoCartOutline/></Link>
                     </div>
                     <div className='sm:hidden'><Sheet>
                         <SheetTrigger><GiHamburgerMenu className='text-2xl'/></SheetTrigger>

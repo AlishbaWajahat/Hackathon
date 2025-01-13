@@ -9,7 +9,7 @@ export default function page() {
             <Header />
             <Hero text='My Account' />
             {/* main section */}
-            <div className='max-w-[2000px] font-poppin flex py-12 xl:px-20 px-8 justify-center xl:gap-8 gap-4 lg:flex-nowrap flex-wrap mb-8'>
+            <div className='max-w-[3000px] font-poppin flex py-12 xl:px-20 px-8 justify-center xl:gap-8 gap-4 lg:flex-nowrap flex-wrap mb-8'>
                 <div className='xl:w-[600px] xl:h-[630px] sm:w-[500px] h-[530px] w-[450px] flex flex-col xl:gap-10 gap-5  xl:py-12 py-6 xl:px-16 sm:px-12 px-0'>
                     <h1 className='text-4xl font-semibold'>Log In</h1>
                     <div className='flex flex-col gap-4'>

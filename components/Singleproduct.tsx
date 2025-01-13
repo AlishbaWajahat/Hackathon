@@ -1,3 +1,5 @@
+"use client"
+
 import React from 'react';
 import Image from "next/image";
 import { FaStar } from "react-icons/fa";
@@ -9,39 +11,60 @@ import { FaGreaterThan } from "react-icons/fa";
 import Card2 from "@/components/Card2";
 import Link from 'next/link';
 
+import { useContext } from 'react';
+import { CartContext } from '@/app/context/context';
+import { product } from '@/types/types';
+
+
 type Propstype = {
     ImageUrl: string,
     title: string,
-    description: string
+    description: string,
+    Cost:number,
+    pro:{id:number,
+        title:string,
+        imageUrl: string,
+        description:string,
+        cost:number
+    },
+
 
 }
 let data = [{
     id: 1,
     imageUrl: "/pic1(2nd sec).png",
     title: "Trenton modular sofa_3",
+    cost:25000
 
 },
 {
     id: 2,
     imageUrl: "/pic2 (2nd sec).png",
     title: "Granite dining table with dining chair",
+    cost:25000
 }, {
     id: 3,
     imageUrl: "/pic3(2nd sec) (2).png",
     title: "Outdoor bar table and stool",
+    cost:25000
 }, {
     id: 4,
     imageUrl: "/pic4(2nd sec).png",
     title: "Plain console with teak mirror",
+    cost:25000
 },]
+  
 
 
 
 export default function Singleproduct(props: Propstype) {
+    const obj=useContext(CartContext)
+    console.log(obj)
+    
     return (
         <>
             {/* 1st section */}
-            <div className='max-w-[2000px] h-[100px] sm:text-base text-[10px] font-poppin flex gap-4 items-center sm:pl-24 pl-8 mt-2'>
+            <div className='max-w-[3000px] h-[100px] sm:text-base text-[10px] font-poppin flex gap-4 items-center sm:pl-24 pl-8 mt-2'>
                 <div className='flex gap-4 items-center'>
                     <p className='text-[#9F9F9F]'>Home</p>
                     <FaGreaterThan />
@@ -55,7 +78,8 @@ export default function Singleproduct(props: Propstype) {
 
             </div>
             {/* 2nd section */}
-            <div className=' max-w-[2000px] flex lg:gap-24 gap-8 justify-center font-poppin border-b-2 border-b-[#9F9F9F] pt-8 lg:px-24 sm:px-12 px-4 md:flex-nowrap flex-wrap lg:pb-0 pb-12'>
+            
+            <div className=' max-w-[3000px] flex lg:gap-24 gap-8 justify-center font-poppin border-b-2 border-b-[#9F9F9F] pt-8 lg:px-24 sm:px-12 px-4 md:flex-nowrap flex-wrap lg:pb-0 pb-12'>
                 <div className='flex lg:gap-8 gap-2'>
                     <div className=' h-[416px] hidden sm:flex flex-col gap-6'>
                         {data.map((item) => {
@@ -71,7 +95,7 @@ export default function Singleproduct(props: Propstype) {
                 <div className='w-[600px] h-[850px] flex flex-col gap-6  '>
                     <div>
                         <h1 className='text-[42px]'>{props.title}</h1>
-                        <p className='text-[#9F9F9F] text-2xl font-medium'>Rs. 250,000.00</p>
+                        <p className='text-[#9F9F9F] text-2xl font-medium'>Rs-{props.Cost}</p>
                     </div>
 
                     <div className='flex gap-4'>
@@ -104,7 +128,7 @@ export default function Singleproduct(props: Propstype) {
                             <p>1</p>
                             <div>+</div>
                         </div>
-                        <div className='flex items-center justify-center text-[20px] px-12 border-2 width-[215px] h-[64px] border-black rounded-2xl'>Add To Cart</div>
+                        <button className='flex items-center justify-center text-[20px] px-12 border-2 width-[215px] h-[64px] border-black rounded-2xl' onClick={()=>obj.add(props.pro)}>Add To Cart</button>
                     </div>
 
                     <div className='h-[730px] text-base text-[#9F9F9F] flex gap-4 border-t-2 border-t-[#9F9F9F] pt-12'>
@@ -135,13 +159,14 @@ export default function Singleproduct(props: Propstype) {
 
                 </div>
             </div>
+            
             {/* 4th section */}
-            <div className="font-poppin flex flex-col items-center py-10 lg:mt-14 mt-4 max-w-[2000px]">
+            <div className="font-poppin flex flex-col items-center py-10 lg:mt-14 mt-4 max-w-[3000px]">
                 <h1 className="text-4xl font-medium text-center">Related Products</h1>
                 <div className="flex gap-6 justify-center w-full flex-wrap  py-6  mt-8 md:mt-14">
                     {data.map((pro) => {
                         return (
-                            <Card2 id={pro.id} ImageUrl={pro.imageUrl} text={pro.title} />
+                            <Card2 id={pro.id} imageUrl={pro.imageUrl} text={pro.title} Cost={props.Cost} />
                         )
                     })}
 
@@ -149,7 +174,11 @@ export default function Singleproduct(props: Propstype) {
                 <Link href={"/shop"}><p className="text-[20px] underline underline-offset-[16px] font-medium mt-6 md:mt-8">View More</p></Link>
             </div>
 
+           
+
         </>
+        
 
     )
 }
+
