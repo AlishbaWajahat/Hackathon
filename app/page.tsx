@@ -37,10 +37,10 @@ export default function Home() {
         <h1 className="text-4xl font-medium text-center">Top Picks For You</h1>
         <p className="text-base text-[#9F9F9F] mt-4 mx-12 text-center">Find a bright ideal to suit your taste with our great selection of suspension, floor and table lights.</p>
         <div className="flex gap-6 justify-center w-full flex-wrap py-6  mt-8 md:mt-14">
-          <Card2 imageUrl="/pic1(2nd sec).png" text="Trenton modular sofa_3" id={1} Cost={25000} />
-          <Card2 imageUrl="/pic2 (2nd sec).png" text="Granite dining table with dining chair" id={2} Cost={25000} />
-          <Card2 imageUrl="/pic3(2nd sec) (2).png" text="Outdoor bar table and stool" id={3} Cost={25000} />
-          <Card2 imageUrl="/pic4(2nd sec).png" text="plain console with teak mirror" id={4} Cost={25000} />
+          <Card2 imageUrl="/pic1(2nd sec).png" text="Trenton modular sofa_3" id="1" Cost={25000} />
+          <Card2 imageUrl="/pic2 (2nd sec).png" text="Granite dining table with dining chair" id="2" Cost={25000} />
+          <Card2 imageUrl="/pic3(2nd sec) (2).png" text="Outdoor bar table and stool" id="3" Cost={25000} />
+          <Card2 imageUrl="/pic4(2nd sec).png" text="plain console with teak mirror" id="4" Cost={25000} />
         </div>
         <Link href={"/shop"}><p className="text-[20px] underline underline-offset-[16px] font-medium mt-6 md:mt-8">View More</p></Link>
       </div>

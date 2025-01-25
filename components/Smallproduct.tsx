@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 type Propstype = {
     ImageUrl: string,
-    id:number
+    id:string
 
 
 }

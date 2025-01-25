@@ -3,11 +3,17 @@ export type cart={
 }
 
 export type product={
-    id:number,
-    title:string,
-    imageUrl:string,
+    id:string,
+    name:string,
+    imagePath:string,
     description:string,
     quantity:number,
-    cost:number,
-    Tcost:number
+    price:number,
+    discountPercentage:number,
+    isFeaturedProduct:boolean,
+    stockLevel:number,
+    category:string
+
+
 }
+

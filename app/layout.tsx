@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import {Poppins , Inter} from "next/font/google";
 import Footer from "@/components/Footer";
 import CartProvider from "./context/provider";
+import { Toaster } from "@/components/ui/toaster"
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -47,8 +48,9 @@ export default function RootLayout({
         className={(inter.variable,poppin.variable)}
       >
       <CartProvider>
-      {children}
+      <main>{children}</main>
       </CartProvider>
+      <Toaster />
         
         
         <Footer/>

@@ -1,103 +1,181 @@
-"use client"
-import { useState, useEffect } from "react"
-import { CartContext } from "./context"
-import { product } from "@/types/types"
+"use client";
+import React, { useState, useMemo, useCallback, useEffect } from 'react';
+import { CartContext, } from './context';
+import { WishListContext } from './wishListcontext';
+import { product } from '@/types/types';
 
-function CartProvider({ children }: { children: React.ReactNode }) {
-
-    const [cart, setCart] = useState<product[]>([]);
-    const [total, setTotal] = useState<number>(0);
-  
-    // Retrieve cart and total from localStorage on the client side
-    useEffect(() => {
-      if (typeof window !== "undefined") {
-        const savedCart = localStorage.getItem("cart");
-        const savedTotal = localStorage.getItem("total");
-  
-        if (savedCart) setCart(JSON.parse(savedCart));
-        if (savedTotal) setTotal(JSON.parse(savedTotal));
-      }
-    }, []);
-  
-    // Save cart to localStorage whenever it changes
-    useEffect(() => {
-      if (typeof window !== "undefined") {
-        localStorage.setItem("cart", JSON.stringify(cart));
-      }
-    }, [cart]);
-  
-    // Save total to localStorage whenever it changes
-    useEffect(() => {
-      if (typeof window !== "undefined") {
-        localStorage.setItem("total", JSON.stringify(total));
-      }
-    }, [total]);
-  
+import { useToast } from "@/hooks/use-toast"
 
 
 
-    function increase(products: product) {
-
-        let updatedCard=(cart.map((item) =>
-            item.id === products.id ? { ...item, quantity: item.quantity + 1, Tcost: item.Tcost + item.cost }
-                : item
-
-        ))
-        setCart(updatedCard)
-        setTotal(updatedCard.reduce((prev, current) => prev + current.Tcost, 0))
-
-    }
-    function decrease(products: product) {
-        if (products.quantity <= 1) {
-            del(products)
-
-        } else {
-            let updatedcart=(cart.map((item) =>
-                item.id === products.id ? { ...item, quantity: item.quantity - 1, Tcost: item.Tcost - item.cost }
-                    : item
-
-            ))
-            setCart(updatedcart)
-            setTotal(updatedcart.reduce((prev, current) => prev + current.Tcost, 0))
-        }
-
-    }
-
- 
-    function add(products: product) {
-        if (cart.some((item) => item.id === products.id)) {
-            let updatedCart=(cart.map((item) =>
-                item.id === products.id ? { ...item, quantity: item.quantity + 1, Tcost: item.Tcost + item.cost }
-                    : item
-
-            ))
-            setCart(updatedCart)
-            setTotal(updatedCart.reduce((prev, current) => prev + current.Tcost, 0))
-            alert("quantity added")
-
-        } else {
-            let array=([...cart, { ...products, quantity: 1, Tcost: products.cost }])
-            setCart(array)
-            setTotal(array.reduce((prev, current) => prev + current.Tcost, 0))
-            alert("product added")
-        }
-    }
 
 
-    function del(product: product) {
-            let update=(cart.filter((e) => e.id !== product.id))
-            setCart(update)
-            setTotal(update.reduce((prev, current) => prev + current.Tcost, 0))
-        
-    }
-    
-    return (
-        <>
-            <CartContext.Provider value={{ cart, add, del, increase, decrease,total }}>
-                {children}
-            </CartContext.Provider>
-        </>
-    )
 
+interface Cart {
+    id: string;
+    title: string;
+    description: string;
+    price: number;
+    quantity?: number;
+    imagePath: string;
 }
-export default CartProvider
+
+interface WishList {
+    id: string;
+    title: string;
+    description: string;
+    price: number;
+    imagePath: string
+}
+
+function useLocalStorage<T>(key: string){
+    
+
+    const [storedValue, setStoredValue] = useState<T | null>(null);
+
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            try {
+                const item = window.localStorage.getItem(key);
+                if (item) {
+                    setStoredValue(JSON.parse(item));
+                }
+            } catch (error) {
+                console.error("Error reading from localStorage", error);
+            }
+        }
+    }, [key]);
+
+    const setValue = (value: T | ((val: T | null) => T)) => {
+        try {
+            const valueToStore = value instanceof Function ? value(storedValue) : value;
+            setStoredValue(valueToStore);
+
+            if (typeof window !== "undefined") {
+                window.localStorage.setItem(key, JSON.stringify(valueToStore));
+            }
+        } catch (error) {
+            console.error("Error saving to localStorage", error);
+        }
+    };
+
+    return [storedValue, setValue] as const;
+}
+
+export default function CartProvider({
+    children,
+}: Readonly<{
+    children: React.ReactNode;
+}>) {
+    
+    const [cart, setCart] = useLocalStorage<Cart[]>("cart");
+    const [wishList, setWishList] = useLocalStorage<WishList[]>("wishlist");
+    const [toggleHeartIcon, settoggleHeartIcon] = useLocalStorage<boolean>("heart");
+  
+
+
+
+    // If the cart is null (first time loading), initialize it as an empty array
+    const cartData = cart ?? [];
+    const wishListData = wishList ?? []
+
+    const total = useMemo(
+        () =>
+            cartData.reduce(
+                (sum, cartItem) => sum + cartItem.price * (cartItem.quantity || 1),
+                0
+            ),
+        [cartData]
+    );
+
+    const handleAddtoCart = useCallback(
+
+        (item: Cart) => {
+            setCart((prevCart) => {
+                const cartItems = prevCart ?? [];
+                const itemExists = cartItems.find((cartItem) => cartItem.id === item.id);
+                if (itemExists) {
+                    return cartItems.map((cartItem) =>
+                        cartItem.id === item.id
+                            ? { ...cartItem, quantity: (cartItem.quantity || 1) + 1 }
+                            : cartItem
+                    );
+                }
+                return [...cartItems, { ...item, quantity: 1 }];
+            });
+        },
+        [setCart]
+    );
+
+    const handleAddtoWishList = useCallback(
+        (item: WishList) => {
+            setWishList((prevWishList) => {
+                const wishListItems = prevWishList ?? []
+                const itemExist = wishListItems.find((wishListItem) => wishListItem.id === item.id)
+                if (itemExist) {
+                    return wishListItems
+                }
+                return [...wishListItems, item]
+               
+            })
+            
+        }, [setWishList]
+       
+    );
+
+
+    const handleDeleteItem = useCallback(
+        (id: string) => {
+            setCart((prevCart) => {
+                const cartItems = prevCart ?? []; // Fallback to empty array if prevCart is null
+                return cartItems.filter((cartItem) => cartItem.id !== id);
+            });
+        },
+        [setCart]
+    );
+
+    const handleDeleteFromWishList = useCallback(
+        (id: string) => {
+            setWishList((prevWishList) => {
+                const wishListItems = prevWishList ?? []; // Fallback to empty array if prevCart is null
+                return wishListItems.filter((wishListItem) => wishListItem.id !== id);
+            });
+            
+        },
+        [setWishList]
+    );
+
+    const handleUpdateQuantity = useCallback(
+        (id: string, change: number) => {
+            setCart((prevCart) => {
+                const cartItems = prevCart ?? []; // Fallback to empty array if prevCart is null
+                return cartItems.map((cartItem) =>
+                    cartItem.id === id
+                        ? {
+                            ...cartItem,
+                            quantity:
+                                (cartItem.quantity || 1) + change > 0
+                                    ? (cartItem.quantity || 1) + change
+                                    : 1,
+                        }
+                        : cartItem
+                );
+            });
+        },
+        [setCart]
+    );
+
+    return (
+
+        <CartContext.Provider
+            value={{ cart: cartData, handleAddtoCart, handleDeleteItem, handleUpdateQuantity, total }}
+        >
+            <WishListContext.Provider
+                value={{ wishList: wishListData, handleAddtoWishList, handleDeleteFromWishList,toggleHeartIcon,settoggleHeartIcon }}
+            >
+                {children}
+            </WishListContext.Provider>
+        </CartContext.Provider>
+
+    );
+}

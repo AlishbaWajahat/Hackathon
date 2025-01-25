@@ -13,9 +13,7 @@ export default function page() {
 
     
 
-    <Cartprovider>
     <Cart/>
-     </Cartprovider>
      <PreFooter/>
     
     </>

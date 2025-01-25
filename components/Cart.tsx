@@ -1,13 +1,20 @@
 "use client"
 import React from 'react'
 import { CartContext } from '@/app/context/context'
-import { useContext } from 'react'
+import { useContext,useState,useEffect } from 'react'
 import { product } from '@/types/types'
 import Image from "next/image";
 import { RiDeleteBin5Line } from "react-icons/ri";
 
 export default function Cart() {
   const obj = useContext(CartContext)
+      const [isLoading, setIsLoading] = useState(true); // Default to true since loading starts immediately.
+          useEffect(() => {
+              // Simulate an API call with a delay
+              setTimeout(() => {
+                  setIsLoading(false); // Set loading to false once data is fetched.
+              }, 1000); // Simulated 2-second delay.
+          }, []);
   return (
     <>
       <div className='max-w-[3000px] font-poppin '>
@@ -21,25 +28,26 @@ export default function Cart() {
                 <div className='w-[200px]'>Quantity</div>
                 <div className='w-[200px]'>Subtotal</div>
               </div>
-              {obj.cart.length > 0 ? obj.cart.map((item: product) => {
-                console.log("id",item.id)
+              {
+                isLoading?<p className='text-center text-xl'>Loading cart...</p>:
+              obj.cart.length > 0 ? obj.cart.map((item: product) => {
                 return (
                   <div className='w-full sm:h-[150px] h-[100px] flex items-center xl:gap-12 sm:gap-6 gap-2 text-center xl:pr-12 pr-0 lg:text-base text-xs relative'>
-                    <RiDeleteBin5Line className='absolute top-1 right-4 md:text-2xl text-lg'onClick={()=>obj.del(item)} />
+                    <RiDeleteBin5Line className='absolute top-1 right-4 md:text-2xl text-lg cursor-pointer'onClick={()=>obj.handleDeleteItem(item.id)} />
 
-                    <div className='flex justify-center items-center lg:w-[150px] lg:h-[150px] bg-[#FBEBB5] rounded-lg p-2'><Image src={item.imageUrl} alt='image' width={150} height={150} />
+                    <div className='flex justify-center items-center lg:w-[150px] lg:h-[150px] rounded-lg p-2'><Image src={item.imagePath} alt='image' width={150} height={150} />
                     </div>
-                    <div className='text-[#9F9F9F] w-[200px]'>{item.title}</div>
-                    <div className='text-[#9F9F9F] w-[200px]'>Rs-{item.cost}</div>
+                    <div className='text-[#9F9F9F] w-[200px]'>{item.name}</div>
+                    <div className='text-[#9F9F9F] w-[200px]'>Rs-{item.price}</div>
                     <div className='w-[200px] flex justify-center items-center'>
                       <div className='sm:w-[70px] w-[50px] border-2 border-[#9F9F9F] px-[4px] gap-2 flex justify-center items-center rounded-lg'>
-                      <div onClick={()=>obj.increase(item)} className='cursor-pointer sm:text-xl text-md'>+</div>
+                      <div onClick={()=>obj.handleUpdateQuantity(item.id,+1)} className='cursor-pointer sm:text-xl text-md'>+</div>
                       {item.quantity}
-                      <div onClick={()=>obj.decrease(item)} className='cursor-pointer sm:text-xl text-md'>-</div>
+                      <div onClick={()=>obj.handleUpdateQuantity(item.id,-1)} className='cursor-pointer sm:text-xl text-md'>-</div>
                       </div>
                       </div>
 
-                    <div className='w-[200px]'>{item.Tcost}</div>
+                    <div className='w-[200px]'>{item.price*item.quantity}</div>
 
                   </div>
                 )

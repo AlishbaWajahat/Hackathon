@@ -1,7 +1,7 @@
 "use client"
 import { createContext } from "react"
- type cart={
+ type cartt={
     [x:string]:any
 }
 
-export const CartContext=createContext({} as cart)
+export const CartContext=createContext({} as cartt)
