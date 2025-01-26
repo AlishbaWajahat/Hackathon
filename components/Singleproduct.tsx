@@ -202,8 +202,8 @@ export default function Singleproduct(props: Propstype) {
                 </div>
                 <div className='w-[600px] h-[850px] flex flex-col gap-6   '>
                     <div>
-                        <h1 className='text-[42px]'>{props.title}</h1>
-                        <p className='text-[#9F9F9F] text-2xl font-medium'>Rs-{props.Cost}</p>
+                        <h1 className='sm:text-[42px] text-2xl'>{props.title}</h1>
+                        <p className='text-[#9F9F9F] sm:text-2xl text-xl font-medium'>Rs-{props.Cost}</p>
                     </div>
 
                     <div className='flex gap-4'>
@@ -231,17 +231,23 @@ export default function Singleproduct(props: Propstype) {
                         <div className='rounded-full w-[30px] h-[30px] bg-[#CDBA7B]'></div>
                     </div>
                     <div className='flex gap-[20px] mb-8 items-center'>
-                        <div className='w-[130px] h-[64px] flex justify-between p-4 items-center border-2 border-[#9F9F9F] rounded-xl'>
+                        <div className='sm:w-[130px] sm:h-[64px] flex justify-between sm:p-4 p-2 gap-4 items-center border-2 border-[#9F9F9F] rounded-xl'>
                             <div>-</div>
                             <p>1</p>
                             <div>+</div>
                         </div>
-                        <button className='flex items-center justify-center text-[20px] px-12 border-2 width-[215px] h-[64px] border-black rounded-2xl' onClick={() => obj.handleAddtoCart(props.prod)}>Add To Cart</button>
+                        <button
+                            className='flex items-center justify-center whitespace-nowrap sm:text-[20px] text-xs p-2 sm:px-8 bg-gray-800 text-white hover:bg-gray-700 sm:w-[215px] w-[120px] sm:h-[64px]  rounded-2xl'
+                            onClick={() => obj.handleAddtoCart(props.prod)}
+                        >
+                            Add to Cart
+                        </button>
+
 
                         {wishlistobj.toggleHeartIcon ? (
-                            <IoHeart className="text-5xl text-red-900 cursor-pointer" onClick={heart} />
+                            <IoHeart className="sm:text-5xl text-3xl text-red-900 cursor-pointer" onClick={heart} />
                         ) : (
-                            <IoHeartOutline className="text-5xl cursor-pointer" onClick={heart} />
+                            <IoHeartOutline className="sm:text-5xl text-3xl cursor-pointer" onClick={heart} />
                         )}
 
                     </div>

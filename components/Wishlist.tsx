@@ -31,12 +31,12 @@ export default function Wishlist() {
                     wislistobj.wishList.map((item: product) => (
                         <div
                             key={item.id}
-                            className="flex font-poppin sm:gap-12 lg:gap-32 gap-3 items-center "
+                            className="flex font-poppin sm:gap-12 lg:gap-32 gap-3 items-center bg-[#FFF9E5] rounded-md md:p-4 p-2  "
                         >
                             <div className="md:w-[300px] md:h-[250px] sm:w-[250px] sm:h-[150px] w-[100px] h-[70px] relative">
                                 <Image src={item.imagePath} alt="image" fill />
                             </div>
-                            <div className="flex flex-col sm:gap-4 gap-2 justify-center p-4 rounded-md bg-[#FFF9E5]">
+                            <div className="flex flex-col sm:gap-4 gap-2 justify-center p-4  ">
                                 <h1 className="md:text-3xl sm:text-2xl text-md font-bold">{item.name}</h1>
                                 <p className="md:text-xl sm:text-lg text-xs text-gray-500">{item.description}</p>
                                 <div className="flex gap-2">

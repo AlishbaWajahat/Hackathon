@@ -56,8 +56,8 @@ function Header() {
 
 
                     </div>
-                    <div className='sm:hidden'><Sheet>
-                        <SheetTrigger><GiHamburgerMenu className='text-2xl' /></SheetTrigger>
+                    <div className='sm:hidden flex'><Sheet>
+                        <SheetTrigger><GiHamburgerMenu className='text-2xl self-center' /></SheetTrigger>
                         <SheetContent className='h-3/4 bg-black text-white p-12 w-64'>
                             <ul>
                                 <li className='mt-4'><a href="/">Home</a></li>
