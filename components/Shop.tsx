@@ -55,6 +55,7 @@ export default function Shop() {
     const [Searchedvalue, setSearchedvalue] = useState<string>('');
     const SearchHandling = (event: { target: { value: string } }) => {
         settypedsearch(event.target.value)
+
     }
     // To filter data
     useEffect(() => {

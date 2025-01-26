@@ -69,10 +69,6 @@ let data = [{
 },]
 
 
-
-
-
-
 export default function Singleproduct(props: Propstype) {
     const { toast } = useToast()
     const obj = useContext(CartContext)
@@ -104,12 +100,6 @@ export default function Singleproduct(props: Propstype) {
         // Update heart state immediately for user feedback
         wishlistobj.settoggleHeartIcon(isInWishlist);
     }, [wishlistobj.wishList]);
-
-
-
-
-
-
 
     useEffect(() => {
         const fetchSelectedProducts = async () => {
@@ -177,11 +167,6 @@ export default function Singleproduct(props: Propstype) {
         )
         setRelatedProducts(filteredProducts)
     }, [Allproducts, selectedProduct])
-
-
-
-
-
 
     return (
         <>
