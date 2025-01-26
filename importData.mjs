@@ -1,5 +1,8 @@
 import { createClient } from '@sanity/client';
 import axios from 'axios';
+import  dotenv  from 'dotenv';
+dotenv.config()
+
 
 
 const client = createClient({
