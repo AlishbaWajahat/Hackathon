@@ -185,7 +185,7 @@ export default function Shop() {
                             <p>Category</p>
                             <select
                                 id="dropdown"
-                                className="border rounded px-3 py-2"
+                                className=" w-[100px] rounded px-3 py-2 "
                                 onChange={categoryHandling}
                             >
                                 <option value="All">All</option>
