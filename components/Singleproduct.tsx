@@ -69,6 +69,7 @@ let data = [{
 },]
 
 
+
 export default function Singleproduct(props: Propstype) {
     const { toast } = useToast()
     const obj = useContext(CartContext)
@@ -81,7 +82,7 @@ export default function Singleproduct(props: Propstype) {
             wishlistobj.handleAddtoWishList(props.prod)
             toast({
                 description: `${props.prod.name} Added to wishlist`,
-              })
+            })
             wishlistobj.settoggleHeartIcon(true)
 
         }
@@ -89,7 +90,7 @@ export default function Singleproduct(props: Propstype) {
             wishlistobj.handleDeleteFromWishList(props.prod.id)
             toast({
                 description: `${props.prod.name} removed from wishlist`,
-              })
+            })
             wishlistobj.settoggleHeartIcon(false)
 
         }
