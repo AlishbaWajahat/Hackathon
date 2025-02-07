@@ -4,6 +4,7 @@ import { product } from "@/types/types";
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import convertToSubcurrency from "@/lib/convertToSubcurrency";
+const DOMAIN_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string);
 
@@ -38,8 +39,9 @@ export async function POST(request: NextRequest) {
             payment_method_types: ["card"],
             // customer: customer.id,
             mode: "payment",
-            success_url: `http://localhost:3000/success?session_id={CHECKOUT_SESSION_ID}`,
-            cancel_url: `http://localhost:3000/cancel`,
+            success_url: `${DOMAIN_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
+            cancel_url: `${DOMAIN_URL}/cancel`,
+
             line_items: line_items
         });
   
