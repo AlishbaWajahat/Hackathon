@@ -4,7 +4,7 @@ import { product } from "@/types/types";
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import convertToSubcurrency from "@/lib/convertToSubcurrency";
-const DOMAIN_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000";
+const DOMAIN_URL = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string);
 
