@@ -5,9 +5,28 @@ import { useContext,useState,useEffect } from 'react'
 import { product } from '@/types/types'
 import Image from "next/image";
 import { RiDeleteBin5Line } from "react-icons/ri";
+import axios from "axios"
 
 export default function Cart() {
   const obj = useContext(CartContext)
+
+  async function CheckOutButton() {
+    try {
+      const cartData = {
+        // email: "alishbawajahat867@gmail.com",
+        // name: "Alishba",
+        cart:obj.cart
+      };
+  
+      const response = await axios.post("/api/payment", cartData);
+      const responseData = await response.data;
+  
+      window.location.href = responseData.url;
+    } catch (error: any) {
+      console.log(error);
+    }
+  }
+ 
       const [isLoading, setIsLoading] = useState(true); // Default to true since loading starts immediately.
           useEffect(() => {
               // Simulate an API call with a delay
@@ -15,6 +34,7 @@ export default function Cart() {
                   setIsLoading(false); // Set loading to false once data is fetched.
               }, 1000); // Simulated 2-second delay.
           }, []);
+
   return (
     <>
       <div className='max-w-[3000px] font-poppin '>
@@ -38,7 +58,7 @@ export default function Cart() {
                     <div className='flex justify-center items-center lg:w-[150px] lg:h-[150px] rounded-lg p-2'><Image src={item.imagePath} alt='image' width={150} height={150} />
                     </div>
                     <div className='text-[#9F9F9F] w-[200px]'>{item.name}</div>
-                    <div className='text-[#9F9F9F] w-[200px]'>Rs-{item.price}</div>
+                    <div className='text-[#9F9F9F] w-[200px]'>${item.price}</div>
                     <div className='w-[200px] flex justify-center items-center'>
                       <div className='sm:w-[70px] w-[50px] border-2 border-[#9F9F9F] px-[4px] gap-2 flex justify-center items-center rounded-lg'>
                       <div onClick={()=>obj.handleUpdateQuantity(item.id,+1)} className='cursor-pointer sm:text-xl text-md'>+</div>
@@ -64,7 +84,7 @@ export default function Cart() {
               <h1 className='text-base font-medium'>Total</h1>
               <p className='text-xl font-medium text-[#B88E2F]'>{obj.total}</p>
             </div>
-            <div className='text-xl sm:w-[220px] w-[150px] h-[60px] flex justify-center items-center border-2 border-black rounded-xl py-3'>Check Out</div>
+            <button onClick={CheckOutButton} className='text-xl sm:w-[220px] w-[150px] h-[60px] flex justify-center items-center  bg-gray-800 text-white hover:bg-gray-700 rounded-xl py-3'>Check Out</button>
           </div>
 
 

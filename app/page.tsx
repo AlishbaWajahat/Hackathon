@@ -4,6 +4,7 @@ import Card2 from "@/components/Card2";
 import Card3 from "@/components/Card3";
 import Singleproduct from '@/components/Singleproduct'
 
+
 import Header from "@/components/Header";
 import { Fullscreen } from "lucide-react";
 import Image from "next/image";

@@ -200,10 +200,10 @@ export default function Singleproduct(props: Propstype) {
                     </div>
                     <div className=' md:h-[600px] h-auto relative  flex items-center justify-center rounded-xl'><Image src={props.ImageUrl} alt='image' width={500} height={500} /></div>
                 </div>
-                <div className='w-[600px] h-[850px] flex flex-col gap-6   '>
-                    <div>
+                <div className='w-[600px] h-[850px] flex flex-col gap-6'>
+                    <div className='flex flex-col gap-3'>
                         <h1 className='sm:text-[42px] text-2xl'>{props.title}</h1>
-                        <p className='text-[#9F9F9F] sm:text-2xl text-xl font-medium'>Rs-{props.Cost}</p>
+                        <p className='text-[#9F9F9F] sm:text-2xl text-xl font-medium'>${props.Cost}</p>
                     </div>
 
                     <div className='flex gap-4'>
@@ -238,7 +238,12 @@ export default function Singleproduct(props: Propstype) {
                         </div>
                         <button
                             className='flex items-center justify-center whitespace-nowrap sm:text-[20px] text-xs p-2 sm:px-8 bg-gray-800 text-white hover:bg-gray-700 sm:w-[215px] w-[120px] sm:h-[64px]  rounded-2xl'
-                            onClick={() => obj.handleAddtoCart(props.prod)}
+                            onClick={() => {obj.handleAddtoCart(props.prod);
+                                toast({
+                                    description: `${props.title} Added to cart`,
+                                  })
+
+                            }}
                         >
                             Add to Cart
                         </button>

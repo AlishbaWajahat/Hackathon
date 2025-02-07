@@ -42,6 +42,7 @@ export default async function Page({ params }: { params: { id: string } }) {
     if (!selectedProduct) {
         return <div>Product not found</div>; // Handle the case when no product is found
     }
+    
 
     return (
         <>
