@@ -38,10 +38,11 @@ export async function POST(request: NextRequest) {
             payment_method_types: ["card"],
             // customer: customer.id,
             mode: "payment",
-            success_url: `http://localhost:3000/success`,
+            success_url: `http://localhost:3000/success?session_id={CHECKOUT_SESSION_ID}`,
             cancel_url: `http://localhost:3000/cancel`,
             line_items: line_items
         });
+  
 
         return NextResponse.json(
             { msg: "Checkout session created", url: checkOutSession.url },
@@ -51,4 +52,24 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ error: error.message }, { status: 500 });
     }
 }
+export async function GET(req: Request) {
+    try {
+      const url = new URL(req.url);
+      const sessionId = url.searchParams.get("session_id");
+  
+      if (!sessionId) {
+        return NextResponse.json({ error: "Session ID is required" }, { status: 400 });
+      }
+  
+      const session = await stripe.checkout.sessions.retrieve(sessionId);
+  
+      return NextResponse.json({
+        session_id: session.id,
+        payment_status: session.payment_status, // "paid", "unpaid", etc.
+        status: session.status, // "complete", "open", etc.
+      });
+    } catch (error: any) {
+      return NextResponse.json({ error: error.message }, { status: 500 });
+    }
+  }
 

@@ -15,7 +15,8 @@ export default function Cart() {
       const cartData = {
         // email: "alishbawajahat867@gmail.com",
         // name: "Alishba",
-        cart:obj.cart
+        cart:obj.cart,
+        delete:obj.handleDeleteItem()
       };
   
       const response = await axios.post("/api/payment", cartData);
