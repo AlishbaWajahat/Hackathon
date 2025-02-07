@@ -24,6 +24,7 @@ const SuccessPageContent = () => {
           // ✅ If payment is successful, clear the cart
           if (data.payment_status === "paid") {
             localStorage.removeItem("cart");
+            obj.setCart([]);
           }
         })
         .catch((err) => console.error("Error fetching session:", err));
@@ -35,7 +36,7 @@ const SuccessPageContent = () => {
       <div className="bg-white shadow-lg rounded-2xl p-8 text-center max-w-md">
         <CheckCircle className="text-green-500 mx-auto w-16 h-16 animate-bounce" />
         <h2 className="text-2xl font-semibold mt-4">Success!</h2>
-        <p className="text-gray-600 mt-2">Your payment was {status || "processing"}.</p>
+        <p className="text-gray-600 mt-2">Your payment has been successfully done.</p>
         <Button 
           className="mt-6 px-6 py-2" 
           onClick={() => router.push("/shop")}

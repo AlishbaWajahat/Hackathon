@@ -168,7 +168,7 @@ export default function CartProvider({
     return (
 
         <CartContext.Provider
-            value={{ cart: cartData, handleAddtoCart, handleDeleteItem, handleUpdateQuantity, total }}
+            value={{ cart: cartData,setCart, handleAddtoCart, handleDeleteItem, handleUpdateQuantity, total }}
         >
             <WishListContext.Provider
                 value={{ wishList: wishListData, handleAddtoWishList, handleDeleteFromWishList,toggleHeartIcon,settoggleHeartIcon }}
